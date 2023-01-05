@@ -17,12 +17,11 @@ function App() {
       <span className="visually-hidden">Loading...</span>
     </Spinner>
     <Routes>
-      <Route path='/' element={<About></About>}></Route>
-      <Route path='/contact' element={<Contact></Contact>}></Route>
       <Route path='/friend' element={<Friend></Friend>}></Route>
+      <Route path='/contact' element={<Contact></Contact>}></Route>
+      <Route path='/about' element={<About></About>}></Route>
       <Route path='*' element={<NotFound></NotFound>}></Route>
     </Routes>
-   
     </div>
   );
 }
