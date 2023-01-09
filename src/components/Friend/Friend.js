@@ -7,11 +7,11 @@ const Friend = () => {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(res => res.json())
         .then(data => setFriends(data))
-    })
+    },[])
     return (
         <div>
             <h1>Hello Friend</h1>
-            {friends.map(()=><Friends key = {friends.id}data={friends}></Friends>)}
+            {friends.map(friend => <Friends key = {friend.id} friend={friend}></Friends>)}
         </div>
     );
 };
