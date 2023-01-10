@@ -1,27 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
-import { AccordionButton, Button, Card, CardGroup } from 'react-bootstrap';
-import Spinner from 'react-bootstrap/Spinner';
-import { Route, Routes } from 'react-router';
-import About from './components/About/About.js';
-import Contact from './components/Contact/Contact.js';
-import Friend from './components/Friend/Friend.js';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Friend from './components/Friend/Friend';
 import NotFound from './components/NotFound/NotFound';
+import Contact from './components/Contact/Contact';
+import About from './components/About/About';
+import Home from './components/Home/Home';
 function App() {
+  const router = createBrowserRouter([
+    {path : '/', element : <div><Home></Home></div>}, 
+    {path : '/about', element : <About></About>}, 
+    {path : '/friends', element : <Friend></Friend>}, 
+    {path : '/contact', element : <Contact></Contact>}, 
+    {path : '/*', element : <NotFound></NotFound>}, 
+  ])
   return (
     <div className="App">
-      <h1>React with Bootstrap</h1>
-      <Button variant="danger">My button</Button>
-      <br/>
-      <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
-    <Routes>
-      <Route path='/friend' element={<Friend></Friend>}></Route>
-      <Route path='/contact' element={<Contact></Contact>}></Route>
-      <Route path='/about' element={<About></About>}></Route>
-      <Route path='*' element={<NotFound></NotFound>}></Route>
-    </Routes>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }

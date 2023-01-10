@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 const Friends = (props)=>{
     const {name, username, id} = props.friend;
-    console.log(id);
+    // console.log(id);
     const navigate = useNavigate()
     const showFriendDetail = () =>{
         const path = `/friend/${id}`
