@@ -1,17 +1,12 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
-const Friends = (props)=>{
-    const {name, username, id} = props.friend;
-    // console.log(id);
-    const navigate = useNavigate()
-    const showFriendDetail = () =>{
-        const path = `/friend/${id}`
-        navigate(path);
-    }
+import {useLoaderData, useNavigate} from 'react-router-dom';
+import Friend from '../Friend/Friend';
+const Friends = ()=>{
+    const friends = useLoaderData();
     return (
     <div>
-        <h2>Name : {name}</h2>
-        <button onClick={showFriendDetail}>{username} id:{id}</button>
+        <h2>I Have {friends.length} Friends</h2>
+        {friends.map(friend => <Friend key = {friend.id} friend = {friend}></Friend>)}
     </div>
     );
 

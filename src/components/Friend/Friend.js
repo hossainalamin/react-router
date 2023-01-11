@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Friends from '../Friends/Friends';
-const Friend = () => {
-    const[friends, setFriends] = useState([]);
-    useEffect(()=>{
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then(res => res.json())
-        .then(data => setFriends(data))
-    },[])
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Friend.css'
+;const Friend = ({friend}) => {
+    const {id, name, email, username} = friend;  
     return (
-        <div>
-            <h1>Hello Friend</h1>
-            {friends.map(friend => <Friends key = {friend.id} friend={friend}></Friends>)}
+        <div className='friend'>
+            <h3>Name : {name}</h3>
+            <p>Email : {email}</p>
+            <p><small>Username : <Link to={`/friend/${id}`}>{username}</Link></small></p>
         </div>
     );
 };
