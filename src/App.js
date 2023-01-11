@@ -5,13 +5,19 @@ import NotFound from './components/NotFound/NotFound';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
 import Home from './components/Home/Home';
+import Main from './layout/Main';
 function App() {
   const router = createBrowserRouter([
-    {path : '/', element : <div><Home></Home></div>}, 
+    {path : '/', 
+    element : <Main></Main>,
+    children: [
+      {path : '/home', element : <Home></Home>},
+      {path : '/friends', element : <Friend></Friend>}, 
+      {path : '/contact', element : <Contact></Contact>}, 
+      {path : '/*', element : <NotFound></NotFound>}
+    ]}, 
     {path : '/about', element : <About></About>}, 
-    {path : '/friends', element : <Friend></Friend>}, 
-    {path : '/contact', element : <Contact></Contact>}, 
-    {path : '/*', element : <NotFound></NotFound>}, 
+   
   ])
   return (
     <div className="App">
